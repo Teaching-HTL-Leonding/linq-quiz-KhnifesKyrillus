@@ -15,7 +15,7 @@ namespace LinqQuiz.Library
         /// </exception>
         public static int[] GetEvenNumbers(int exclusiveUpperLimit)
         {
-            return exclusiveUpperLimit == 0
+            return exclusiveUpperLimit <= 0
                 ? throw new ArgumentOutOfRangeException()
                 : Enumerable.Range(1, exclusiveUpperLimit - 1).Where(val => val % 2 == 0).ToArray();
         }
