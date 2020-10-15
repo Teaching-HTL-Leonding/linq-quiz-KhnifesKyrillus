@@ -1,9 +1,9 @@
 using System;
-using Xunit;
-using LinqQuiz.Library;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using LinqQuiz.Library;
 using Newtonsoft.Json;
+using Xunit;
 
 namespace LinqQuiz.Tests
 {
@@ -16,9 +16,8 @@ namespace LinqQuiz.Tests
 
     public class Family : IFamily
     {
-        public int ID { get; set; }
-
         public IPerson[] PersonArray { get; set; } = Array.Empty<IPerson>();
+        public int ID { get; set; }
 
         public IReadOnlyCollection<IPerson> Persons => new ReadOnlyCollection<IPerson>(PersonArray);
     }
@@ -29,29 +28,31 @@ namespace LinqQuiz.Tests
         [Fact]
         public void CurrectResult()
         {
-            var families = new[] {
+            var families = new[]
+            {
                 new Family
                 {
                     ID = 1,
-                    PersonArray = new []
+                    PersonArray = new[]
                     {
-                        new Person { FirstName = "Foo", LastName = "Bar", Age = 42 },
-                        new Person { FirstName = "Mad", LastName = "Max", Age = 21 }
+                        new Person {FirstName = "Foo", LastName = "Bar", Age = 42},
+                        new Person {FirstName = "Mad", LastName = "Max", Age = 21}
                     }
                 },
                 new Family
                 {
                     ID = 2,
-                    PersonArray = new []
+                    PersonArray = new[]
                     {
-                        new Person { FirstName = "Dead", LastName = "Pool", Age = 25 }
+                        new Person {FirstName = "Dead", LastName = "Pool", Age = 25}
                     }
                 }
             };
 
-            var expectedResult = new[] {
-                new FamilySummary { FamilyID = 1, NumberOfFamilyMembers = 2, AverageAge = 31.5m },
-                new FamilySummary { FamilyID = 2, NumberOfFamilyMembers = 1, AverageAge = 25 }
+            var expectedResult = new[]
+            {
+                new FamilySummary {FamilyID = 1, NumberOfFamilyMembers = 2, AverageAge = 31.5m},
+                new FamilySummary {FamilyID = 2, NumberOfFamilyMembers = 1, AverageAge = 25}
             };
 
             Assert.Equal(JsonConvert.SerializeObject(expectedResult),
@@ -61,7 +62,7 @@ namespace LinqQuiz.Tests
         [Fact]
         public void EmptyFamily()
         {
-            var families = new[] { new Family { ID = 1, PersonArray = new Person[0] } };
+            var families = new[] {new Family {ID = 1, PersonArray = new Person[0]}};
 
             var result = Quiz.GetFamilyStatistic(families);
 

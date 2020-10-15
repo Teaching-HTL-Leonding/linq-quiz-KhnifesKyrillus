@@ -1,6 +1,6 @@
 using System;
-using Xunit;
 using LinqQuiz.Library;
+using Xunit;
 
 namespace LinqQuiz.Tests
 {
@@ -9,7 +9,7 @@ namespace LinqQuiz.Tests
         [Fact]
         public void CurrectResult()
         {
-            Assert.Equal(new[] { 196, 49 }, Quiz.GetSquares(15));
+            Assert.Equal(new[] {196, 49}, Quiz.GetSquares(15));
         }
 
         [Fact]

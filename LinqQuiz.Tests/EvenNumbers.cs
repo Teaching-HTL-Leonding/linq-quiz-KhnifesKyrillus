@@ -1,6 +1,6 @@
 using System;
-using Xunit;
 using LinqQuiz.Library;
+using Xunit;
 
 namespace LinqQuiz.Tests
 {
@@ -9,7 +9,7 @@ namespace LinqQuiz.Tests
         [Fact]
         public void CurrectResult()
         {
-            Assert.Equal(new[] { 2, 4, 6, 8 }, Quiz.GetEvenNumbers(10));
+            Assert.Equal(new[] {2, 4, 6, 8}, Quiz.GetEvenNumbers(10));
         }
 
         [Fact]
